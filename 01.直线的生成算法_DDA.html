@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.直线的生成算法_DDA</title>
+    <script src="./assets/tailwindcss.js"></script>
+</head>
+<body>
+    <div class="flex border border-1 border-gray-400 h-screen">
+        <div class="flex-1 ">
+            <div id="graph-container" class="m-auto w-[900px] mt-[20px] h-[900px] flex flex-wrap border border-1 border-gray-300 m-[12px]"></div>
+        </div>
+        <div class="w-[400px] ml-[8px] border border-l-1 border-gray-400">
+            <div class="flex mt-[12px]">
+                <div class="w-[60px] text-center text-neutral-700 leading-[36px]">起点</div>
+                <input type="text" placeholder="请输入起点:x,y" value="1,4" class="mx-[16px] block border rounded-[8px] w-[286px] leading-[36px] border-1 border-gray-400 indent-4">
+            </div>
+            <div class="flex mt-[12px]">
+                <div class="w-[60px] text-center text-neutral-700 leading-[36px]">终点</div>
+                <input type="text" placeholder="请输入起点x,y" value="5,9" class="mx-[16px] block border rounded-[8px] w-[286px] leading-[36px] border-1 border-gray-400 indent-4">
+            </div>
+            <div id="start-btn" class="w-auto h-[36px] leading-[36px] text-center text-neutral-700 rounded-[8px] cursor-pointer border border-1 border-gray-400 my-4 mx-[12px]">
+                开始绘制
+            </div>
+            <div id="message-container" class="m-[12px]">
+
+            </div>
+        </div>
+    </div>
+    <script src="./script/01.js"></script>
+</body>
+</html>
