@@ -28,7 +28,7 @@ async function startDarw() {
 		dx = end_x - start_x;
 		dy = end_y - start_y;
 		if (dx === 0 || dy === 0) {
-			appendMessage("暂不考虑和坐标轴重合于平行的场景");
+			appendMessage("暂不考虑和坐标轴重合与平行的场景");
 		} else {
 			size = Math.max(Math.abs(dx), Math.abs(dy)) + offset * 2;
 			drawBox(size);
@@ -132,7 +132,7 @@ function appendMessage(message) {
 function drawBox(size) {
 	// 获取每个方格的宽度
 	const rootNode = document.getElementById("graph-container");
-	const width = Math.floor(800 / size) - 1;
+	const width = Math.floor(800 / size);
 	for (let i = 0; i < size; i++) {
 		for (let j = 0; j < size; j++) {
 			const element = document.createElement("div");

@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>直线的生成算法_DDA</title>
+    <title>直线的生成算法_BresenHam</title>
     <script src="./assets/tailwindcss.js"></script>
 </head>
 <body>
-    <div class="text-center text-blue-500 mx-auto my-[16px]">直线的生成算法_DDA</div>
+    <div class="text-center text-blue-500 mx-auto my-[16px]">直线的生成算法_BresenHam</div>
     <div class="flex border border-0 border-t border-gray-400">
         <div class="flex-1 ">
             <div id="graph-container" class="m-auto w-[800px] mt-[20px] h-[800px] flex flex-wrap border border-1 border-gray-300 m-[12px]"></div>
         </div>
         <div class="w-[400px] ml-[8px] border border-t-0 border border-gray-400">
-            <div class="leading-[20px] mb-[12px] text-blue-800 p-[8px] border border-1 border-blue-300 m-[12px] rounded-[8px]">目前，仅考虑第一象限的数据，其他的象限的数据可以通过平移来实现</div>
+            <div class="leading-[20px] mb-[12px] text-blue-800 p-[8px] border border-1 border-blue-300 m-[12px] rounded-[8px]">
+                目前，仅考虑第一象限的数据，其他的象限的数据可以通过平移来实现,考虑自增的反向是1,如果自增为-1 <span class="text-blue-500">也就是说斜率是大于0的情况</span>且通过修改起点和终点的位置来实现
+            </div>
             <div class="flex mt-[12px]">
                 <div class="w-[60px] text-center text-neutral-700 leading-[36px]">起点</div>
                 <input type="text" placeholder="请输入起点:x,y" value="1,4" class="mx-[16px] block border rounded-[8px] w-[286px] leading-[36px] border-1 border-gray-400 indent-4">
@@ -30,6 +32,6 @@
             </div>
         </div>
     </div>
-    <script src="./script/01.js"></script>
+    <script src="./script/line_Bresenham.js"></script>
 </body>
 </html>
