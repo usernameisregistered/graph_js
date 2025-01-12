@@ -145,7 +145,7 @@ function appendMessage(message) {
 function drawBox(size) {
   // 获取每个方格的宽度
   const rootNode = document.getElementById("graph-container");
-  const width = Math.floor(800 / size);
+  const width = Math.floor((800 - 2) / size);
   for (let i = 0; i < size; i++) {
     for (let j = 0; j < size; j++) {
       const element = document.createElement("div");
