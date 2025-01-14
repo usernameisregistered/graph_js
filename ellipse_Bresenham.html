@@ -3,22 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>圆的生成算法_中点画圆算法</title>
+    <title>椭圆的生成算法_中点画椭圆算法</title>
     <script src="./assets/tailwindcss.js"></script>
 </head>
 <body>
-    <div class="text-center text-blue-500 mx-auto my-[16px]">圆的生成算法_中点画圆算法</div>
+    <div class="text-center text-blue-500 mx-auto my-[16px]">椭圆的生成算法_中点画椭圆圆算法</div>
     <div class="flex border border-0 border-t border-gray-400">
         <div class="flex-1 ">
             <div id="graph-container" class="m-auto w-[800px] mt-[20px] h-[800px] flex flex-wrap border border-1 border-gray-300 m-[12px]"></div>
         </div>
         <div class="w-[400px] ml-[8px] border border-t-0 border border-gray-400">
             <div class="leading-[20px] mb-[12px] text-blue-800 p-[8px] border border-1 border-blue-300 m-[12px] rounded-[8px]">
-                设定圆的坐标圆心为坐标原点，非坐标原点的可以先将原点坐标平移到圆心然后计算，最后平移生成
+                设定椭圆圆的坐标圆心为坐标原点，非坐标原点的可以先将原点坐标平移到圆心然后计算，最后平移生成
             </div>
             <div class="flex mt-[12px]">
-                <div class="w-[60px] text-center text-neutral-700 leading-[36px]">半径</div>
-                <input type="text" placeholder="请输入半径" value="10" class="mx-[16px] block border rounded-[8px] w-[286px] leading-[36px] border-1 border-gray-400 indent-4">
+                <div class="w-[60px] text-center text-neutral-700 leading-[36px]">x轴半径</div>
+                <input type="text" placeholder="请输入x轴半径" value="8" class="mx-[16px] block border rounded-[8px] w-[286px] leading-[36px] border-1 border-gray-400 indent-4">
+            </div>
+            <div class="flex mt-[12px]">
+                <div class="w-[60px] text-center text-neutral-700 leading-[36px]">y轴半径</div>
+                <input type="text" placeholder="请输入y轴半径" value="6" class="mx-[16px] block border rounded-[8px] w-[286px] leading-[36px] border-1 border-gray-400 indent-4">
             </div>
             <div id="start-btn" class="w-auto h-[36px] leading-[36px] text-center text-neutral-700 rounded-[8px] cursor-pointer border border-1 border-gray-400 my-4 mx-[12px]">
                 开始绘制
@@ -28,6 +32,6 @@
             </div>
         </div>
     </div>
-    <script src="./script/circle_Bresenham.js"></script>
+    <script src="./script/ellipse_Bresenham.js"></script>
 </body>
 </html>
