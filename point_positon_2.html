@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>点与平面图形的位置关系-非零环绕规则</title>
+    <script src="./assets/tailwindcss.js"></script>
+</head>
+<body>
+    <div class="text-center text-blue-500 mx-auto my-[16px]">点与平面图形的位置关系-非零环绕规则</div>
+    <div class="flex border border-0 border-t border-gray-400">
+        <div class="flex-1 ">
+            <div id="graph-container" class="m-auto w-[800px] mt-[20px] h-[800px] flex flex-wrap border border-1 border-gray-300 m-[12px]">
+                <canvas id="graph-canvas" width="800" height="800" class="w-full h-full bg-gray-300"></canvas>
+            </div>
+        </div>
+        <div class="w-[400px] ml-[8px] border border-t-0 border border-gray-400">
+            <div class="leading-[20px] mb-[12px] text-blue-800 p-[8px] border border-1 border-blue-300 m-[12px] rounded-[8px]">
+                设定多边形的每个顶点的位置都在第一个象限内<br/>
+                请在canvas中点击绘制多边形，如需结束请双击
+            </div>
+            <div id="start-btn" class="w-auto h-[36px] leading-[36px] text-center text-neutral-700 rounded-[8px] cursor-pointer border border-1 border-gray-400 my-4 mx-[12px]">
+                开始绘制
+            </div>
+            <div id="message-container" class="m-[12px] max-h-[600px] overflow-y-auto">
+
+            </div>
+        </div>
+    </div>
+    <script src="./script/polygon_split.js"></script>
+</body>
+</html>
