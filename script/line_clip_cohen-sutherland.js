@@ -6,8 +6,8 @@ const height = canvas.height;
 const rectPoint = [width / 4, height / 4, width / 2, height / 2];
 const xMin = rectPoint[0],
   xMax = rectPoint[2] + xMin,
-  yMin = rectPoint[1],
-  yMax = rectPoint[3] + yMin;
+  yMin = height - rectPoint[1] - rectPoint[3],
+  yMax = height - rectPoint[1];
 const LEFT = 0b0001;
 const RIGHT = 0b0010;
 const BOTTOM = 0b0100;
@@ -30,12 +30,12 @@ function clearCanvas() {
 }
 function drawPoint(event) {
   if (pointList.length === 0) {
-    pointList.push([event.offsetX, event.offsetY]);
+    pointList.push([event.offsetX, height - event.offsetY]);
     context.strokeStyle = "red";
     context.beginPath();
     context.moveTo(event.offsetX, event.offsetY);
   } else {
-    pointList.push([event.offsetX, event.offsetY]);
+    pointList.push([event.offsetX, height - event.offsetY]);
     context.lineTo(event.offsetX, event.offsetY);
     context.stroke();
     context.strokeStyle = "#000";
@@ -50,7 +50,8 @@ function clipLine(points) {
   let code1 = getPointAreaCode(point1);
   let code2 = getPointAreaCode(point2);
   let redraw = false;
-  let isoutput= true;
+  let isoutput = true;
+  let k, b;
   while (true) {
     if ((code1 | code2) === 0) {
       isoutput && appendMessage("完全在窗口边界内");
@@ -62,36 +63,22 @@ function clipLine(points) {
     } else {
       isoutput && appendMessage("部分在窗口边界内");
       isoutput = false;
+      if (!k) {
+        k = (point1[1] - point2[1]) / (point1[0] - point2[0]);
+        b =
+          (point1[0] * point2[1] - point2[0] * point1[1]) /
+          (point1[0] - point2[0]);
+      }
       let code = code1 !== 0 ? code1 : code2;
       let tempPoint;
       if (code & LEFT) {
-        tempPoint = [
-          xMin,
-          point1[1] +
-            ((point2[1] - point1[1]) * (xMin - point1[0])) /
-              [point2[0] - point1[0]],
-        ];
+        tempPoint = [xMin, k * xMin + b];
       } else if (code & RIGHT) {
-        tempPoint = [
-          xMax,
-          point1[1] +
-            ((point2[1] - point1[1]) * (xMax - point1[0])) /
-              [point2[0] - point1[0]],
-        ];
+        tempPoint = [xMax, k * xMax + b];
       } else if (code & BOTTOM) {
-        tempPoint = [
-          point1[0] +
-            ((point2[0] - point1[0]) * (yMin - point1[1])) /
-              [point2[0] - point1[0]],
-          yMin,
-        ];
+        tempPoint = [(yMin - b) / k, yMin];
       } else {
-        tempPoint = [
-          point1[0] +
-            ((point2[0] - point1[0]) * (yMax - point1[1])) /
-              [point2[0] - point1[0]],
-          yMax,
-        ];
+        tempPoint = [(yMax - b) / k, yMax];
       }
       if (code === code1) {
         code1 = getPointAreaCode(tempPoint);
@@ -100,14 +87,13 @@ function clipLine(points) {
         code2 = getPointAreaCode(tempPoint);
         pointList[1] = tempPoint;
       }
-      
     }
   }
-  if(redraw){
+  if (redraw) {
     context.strokeStyle = "yellow";
     context.beginPath();
-    context.moveTo(pointList[0][0], pointList[0][1]);
-    context.lineTo(pointList[1][0], pointList[1][1]);
+    context.moveTo(pointList[0][0], height - pointList[0][1]);
+    context.lineTo(pointList[1][0], height - pointList[1][1]);
     context.stroke();
     context.strokeStyle = "#000";
   }
