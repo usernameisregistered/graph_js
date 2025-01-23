@@ -14,6 +14,6 @@
 - [x] 多边形识别_延长线算法
 - [x] 点与平面图形的位置关系-奇偶原则
 - [ ] 多边形剖分算法
-- [ ] cohen-sutherland线段裁剪算法
+- [x] cohen-sutherland线段裁剪算法
 - [ ] 梁友栋-barsky线段裁剪算法
 - [ ] Nicholl-lee-Nicholl线段裁剪算法
