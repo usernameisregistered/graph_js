@@ -1,6 +1,12 @@
 const canvas = document.getElementById("graph-canvas");
 const context = canvas.getContext("2d");
-let pointList = [];
+const width = canvas.width;
+const height = canvas.height;
+const rectPoint = [width / 4, height / 4, width / 2, height / 2];
+const xMin = rectPoint[0],
+  xMax = rectPoint[2] + xMin,
+  yMin = rectPoint[1],
+  yMax = rectPoint[3] + yMin;
 clearCanvas();
 document.getElementById("start-btn").addEventListener("click", () => {
   clearCanvas();
@@ -36,8 +42,30 @@ function drawPoint(event) {
 }
 
 function clipLine(){
+  const point1 = pointList[0]
+  const point2 = pointList[1]
+  const dx = point2[0] - point1[0];
+  const dy = point2[1] - point1[1];
+  if(dx === 0 && (point1[0] - xMin < 0 || xMax - point1[0] < 0)){
+    appendMessage("完全在窗口边界内");
+  } else if(dy === 0 && (yMax - point1[1] < 0 || point1[1] - yMin < 0)){
+    appendMessage("完全在窗口边界内");
+  } else {
+    const ul = (point1[0] - xMin )/ dx * -1;
+    const ur = (xMax - point1[0] )/ dx;
+    const ut = (yMax - point1[1]) / dy;
+    const ub = (point1[1] - yMin) / dy * -1;
+    const umax = Math.max(ul, ub, 0)
+    const umin = Math.min(ur, ut, 1)
+    if(umax > umin){
+      appendMessage("完全在窗口边界内");
+    }
+  }
+
+  
   
 }
+
 /**
  * 追加提示信息
  * @param {String} message
