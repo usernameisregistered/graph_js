@@ -16,3 +16,4 @@
 - [ ] 多边形剖分算法
 - [x] cohen-sutherland线段裁剪算法
 - [x] 梁友栋-barsky线段裁剪算法
+- [ ] Sutherland-Hodgman多边形裁剪算法
